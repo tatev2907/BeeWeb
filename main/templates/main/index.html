@@ -1,0 +1,25 @@
+{% extends "main/base.html" %}
+{% block title %} URL SHORTENER  {% endblock %}
+{% block content %}
+<div class="container">
+
+{% if error_message %}
+<p>
+    <strong>{{ error_message }}</strong>
+</p>
+{% endif %}
+
+<form action="{% url 'test' %}" method="get">
+    {% csrf_token %}
+    <input type="text" name="url" class="custom"placeholder="URL" id="inp"><br/><br/>
+    <input type="submit" id="btn" value="Modify" />
+</form>
+{% if shortURL %}
+	<br>
+
+<span class="custom">
+	Shortened URL: <strong><a href="http://localhost:8000/{{shortURL}}">http://localhost:8000/{{shortURL}}</a></strong>
+</span>
+{% endif %}
+</div>
+{% endblock %}
